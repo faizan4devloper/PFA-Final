@@ -1,0 +1,95 @@
+/* ReviewCases.css */
+
+.review-cases-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.filter-select {
+  padding: 8px;
+  border-radius: 5px;
+}
+
+/* ReviewCases.css */
+
+.cases-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.cases-table th,
+.cases-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.cases-table th {
+  background-color: #040404;
+  text-align: left;
+  color: #fff;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.cases-table td {
+  text-align: center;
+}
+
+.cases-table tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+.cases-table td svg {
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.case-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #333;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin-bottom: 5px;
+}

@@ -1,0 +1,65 @@
+/* FinancialReview.css */
+
+.financial-review-container {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.financial-review-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.case-details,
+.remarks,
+.sponsorship-decision {
+  margin-bottom: 20px;
+}
+
+.case-details h3,
+.remarks h3,
+.sponsorship-decision h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.sponsorship-decision button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sponsorship-decision button:hover {
+  background-color: #0056b3;
+}
+
+.selected-decision {
+  margin-top: 20px;
+}
+
+.selected-decision h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.additional-items h4 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.additional-items ul {
+  padding: 0;
+  margin-left: 20px;
+}
+
+.additional-items li {
+  list-style-type: none;
+  margin-bottom: 5px;
+}

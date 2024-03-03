@@ -1,0 +1,56 @@
+.admin-dashboard {
+  font-family: Arial, sans-serif;
+}
+.admin-dashboard h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "Arial", sans-serif; /* Custom font family */
+  color: #007bff; /* Custom color */
+  font-size: 24px; /* Custom font size */
+  text-transform: uppercase; /* Convert text to uppercase */
+  letter-spacing: 2px; /* Adjust letter spacing */
+}
+.submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-color: #45a049;
+}
+
+.submissions-table th,
+.submissions-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.submissions-table th {
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
+}
+
+.submissions-table td {
+  text-align: center;
+  /* text-align: left; */
+}
+
+.submissions-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.submissions-table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.submissions-table button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px 12px;
+  margin-right: 5px;
+}
+.submissions-table .btn-delete {
+  background-color: #f56565;
+  color: white;
+}

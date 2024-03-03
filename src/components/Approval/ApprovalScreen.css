@@ -1,0 +1,87 @@
+/* ApprovalScreen.module.css */
+
+/* Approval screen container */
+.approval-screen {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f3f5;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.approval-screen h1 {
+  color: #4d4d4d;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* List of cases */
+.approval-screen ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.approval-screen li {
+  cursor: pointer;
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.approval-screen li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Case details container */
+.case-details {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Case details title */
+.case-details h2 {
+  color: #4d4d4d;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+/* Case details paragraph */
+.case-details p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Documents container */
+.documents {
+  margin-top: 30px;
+}
+
+/* Document list */
+.documents ul {
+  padding: 0;
+}
+
+.documents li {
+  margin-bottom: 10px;
+}
+
+/* Document link */
+.documents a {
+  color: #007bff;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.documents a:hover {
+  text-decoration: underline;
+}

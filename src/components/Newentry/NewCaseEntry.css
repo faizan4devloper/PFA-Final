@@ -1,0 +1,102 @@
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+}
+
+.form-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "Arial", sans-serif; /* Custom font family */
+  color: #007bff; /* Custom color */
+  font-size: 24px; /* Custom font size */
+  text-transform: uppercase; /* Convert text to uppercase */
+  letter-spacing: 2px; /* Adjust letter spacing */
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #007bff;
+}
+
+input,
+select,
+textarea {
+  width: calc(100% - 40px);
+  padding: 12px 40px 12px 40px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #495057;
+  box-shadow: none;
+  outline: none;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%231c1c1c' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+textarea {
+  height: 100px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00a8c5;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #495057;
+}
+/* NewCaseEntry.css */
+
+/* NewCaseEntry.css */
+
+/* Style for the file input */
+input[type="file"] {
+  display: none; /* Hide the default file input */
+}
+
+.file-input-label {
+  display: inline-block;
+  background-color: #00a8c5; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 10px 20px; /* Button padding */
+  border-radius: 5px; /* Button border radius */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.file-input-label:hover {
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #495057;
+}
+
+.file-input-icon {
+  margin-right: 8px; /* Add some space between the icon and the text */
+}
