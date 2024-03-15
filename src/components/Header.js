@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
 
-  // Close the menu when the component is mounted or unmounted
   useEffect(() => {
     const handleWindowClick = () => {
       setShowMenu(false);
@@ -18,9 +18,8 @@ function Header() {
     };
   }, []);
 
-  // Toggle the menu
   const toggleMenu = (e) => {
-    e.stopPropagation(); // Prevent event propagation to parent elements
+    e.stopPropagation();
     setShowMenu((prevShowMenu) => !prevShowMenu);
   };
 
@@ -35,39 +34,48 @@ function Header() {
       </button>
       <nav
         className={`nav-links ${showMenu ? "active" : ""}`}
-        onClick={(e) => e.stopPropagation()} // Prevent menu closing when clicking inside the menu
+        onClick={(e) => e.stopPropagation()}
       >
         <ul>
           <li>
-            <Link to="/" onClick={toggleMenu}>
+            <Link
+              to="/"
+              onClick={toggleMenu}
+              className={location.pathname === "/" ? "active" : ""}
+            >
               New Case Entry
             </Link>
           </li>
           <li>
-            <Link to="/review" onClick={toggleMenu}>
+            <Link
+              to="/review"
+              onClick={toggleMenu}
+              className={location.pathname === "/review" ? "active" : ""}
+            >
               Review Cases
             </Link>
           </li>
+
           <li>
-            <Link to="/approval" onClick={toggleMenu}>
-              Approval Screen
-            </Link>
-          </li>
-          <li>
-            <Link to="/financial-review" onClick={toggleMenu}>
+            <Link
+              to="/financial-review"
+              onClick={toggleMenu}
+              className={
+                location.pathname === "/financial-review" ? "active" : ""
+              }
+            >
               Financial Review
             </Link>
           </li>
           <li>
-            <Link to="/admin" onClick={toggleMenu}>
-              Login Admin
+            <Link
+              to="/Admin"
+              onClick={toggleMenu}
+              className={location.pathname === "/Admin" ? "active" : ""}
+            >
+              Admin Login
             </Link>
           </li>
-          {/* <li>
-            <Link to="/dashboard" onClick={toggleMenu}>
-              Case Dashboard
-            </Link>
-          </li> */}
         </ul>
       </nav>
     </header>

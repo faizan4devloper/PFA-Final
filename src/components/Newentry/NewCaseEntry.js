@@ -8,9 +8,11 @@ import {
   FiUsers,
   FiFileText,
   FiUpload,
+  FiCheckCircle,
 } from "react-icons/fi";
 import firebase from "../../firebase";
 import "firebase/compat/firestore";
+import "firebase/compat/storage";
 
 function NewCaseEntry() {
   const initialFormData = {
@@ -25,41 +27,56 @@ function NewCaseEntry() {
   };
 
   const [formData, setFormData] = useState({ ...initialFormData });
-  const [selectedFileName, setSelectedFileName] = useState("");
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleDocumentChange = (e) => {
     const files = e.target.files;
-    setFormData({ ...formData, documents: files });
-
-    // Display the selected file name
-    if (files.length > 0) {
-      setSelectedFileName(files[0].name);
-    } else {
-      setSelectedFileName("");
-    }
+    setSelectedFiles(files);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data submitted to Firebase:", formData);
-    setFormData({ ...initialFormData });
+    const storageRef = firebase.storage().ref();
 
-    const databaseRef = firebase.firestore();
-    const collectionRef = databaseRef.collection("formSubmissions");
     try {
-      // Add form data to Firestore
-      await collectionRef.add(formData);
-      console.log("Form data stored in Firestore successfully!");
+      setUploading(true);
+      // Upload files to Firebase Storage
+      const fileUrls = await Promise.all(
+        Array.from(selectedFiles).map(async (file) => {
+          const fileRef = storageRef.child(file.name);
+          await fileRef.put(file);
+          return fileRef.getDownloadURL();
+        })
+      );
 
-      // Clear form fields after submission if needed
-      e.target.reset();
+      // Update formData with file URLs
+      setFormData({
+        ...formData,
+        documentUrls: fileUrls,
+      });
+
+      const databaseRef = firebase.firestore();
+      const collectionRef = databaseRef.collection("formSubmissions");
+
+      await collectionRef.add(formData);
+
+      setSubmissionSuccess(true);
+      setFormData({ ...initialFormData });
+      setSelectedFiles([]);
+      setUploading(false);
     } catch (error) {
       console.error("Error storing form data in Firestore:", error);
+      setUploading(false);
     }
   };
 
@@ -163,10 +180,26 @@ function NewCaseEntry() {
           <label htmlFor="documents" className="file-input-label">
             <FiUpload className="file-input-icon" /> Choose Files
           </label>
-          {selectedFileName && <p>Selected file: {selectedFileName}</p>}
+
+          {selectedFiles.length > 0 && (
+            <p>
+              Selected files:{" "}
+              {Array.from(selectedFiles)
+                .map((file) => file.name)
+                .join(", ")}
+            </p>
+          )}
         </div>
-        <button type="submit">Join NGO</button>
+        <button type="submit" disabled={uploading}>
+          {uploading ? "Uploading..." : "Join NGO"}
+        </button>{" "}
       </form>
+      {submissionSuccess && (
+        <div className="success-message">
+          <FiCheckCircle className="success-icon" />
+          <p>Form submitted successfully!</p>
+        </div>
+      )}
     </div>
   );
 }

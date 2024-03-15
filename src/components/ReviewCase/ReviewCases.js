@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FiEye, FiX } from "react-icons/fi";
 import firebase from "../../firebase";
+import "firebase/compat/firestore";
+import { FiEye, FiX } from "react-icons/fi";
 import "./ReviewCases.css";
 
 function ReviewCases() {
@@ -13,15 +14,23 @@ function ReviewCases() {
     const fetchCases = async () => {
       try {
         const databaseRef = firebase.firestore();
-        const casesRef = databaseRef.collection("cases");
-        const snapshot = await casesRef.get();
-        const casesData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const collectionRef = databaseRef.collection("formSubmissions");
+        const snapshot = await collectionRef.get();
+        const approvedSubmissions =
+          JSON.parse(localStorage.getItem("approvedSubmissions")) || [];
+        const casesData = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .filter(
+            (c) =>
+              (c.status === "Approved" || c.status === "Rejected") &&
+              !approvedSubmissions.includes(c.id)
+          );
         setCases(casesData);
       } catch (error) {
-        console.error("Error fetching cases:", error);
+        console.error("Error fetching cases from Firestore:", error);
       }
     };
 
@@ -37,13 +46,18 @@ function ReviewCases() {
     setShowModal(true);
   };
 
+  const handleApprove = async () => {
+    // Handle approval logic
+  };
+
+  const handleReject = async () => {
+    // Handle rejection logic
+  };
+
   const closeModal = () => {
     setShowModal(false);
     setSelectedCase(null);
   };
-
-  const filteredCases =
-    filter === "All" ? cases : cases.filter((c) => c.status === filter);
 
   return (
     <div className="review-cases-container">
@@ -58,7 +72,6 @@ function ReviewCases() {
         >
           <option value="All">All</option>
           <option value="Approved">Approved</option>
-          <option value="Pending">Pending</option>
           <option value="Rejected">Rejected</option>
         </select>
       </div>
@@ -66,21 +79,28 @@ function ReviewCases() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Student Name</th>
             <th>Status</th>
-            <th>Class</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {filteredCases.map((c) => (
-            <tr key={c.id} onClick={() => handleCaseClick(c)}>
+          {cases.map((c) => (
+            <tr
+              key={c.id}
+              onClick={() => handleCaseClick(c)}
+              style={{
+                display:
+                  filter === "All" || filter === c.status
+                    ? "table-row"
+                    : "none",
+              }}
+            >
               <td>{c.id}</td>
-              <td>{c.name}</td>
+              <td>{c.studentName}</td>
               <td>{c.status}</td>
-              <td>{c.class}</td>
               <td>
-                <FiEye />
+                <FiEye className="eye-icon" />
               </td>
             </tr>
           ))}
@@ -94,9 +114,14 @@ function ReviewCases() {
             </span>
             <h2>Case Details</h2>
             <p>ID: {selectedCase.id}</p>
-            <p>Name: {selectedCase.name}</p>
+            <p>Name: {selectedCase.studentName}</p>
             <p>Status: {selectedCase.status}</p>
-            <p>Class: {selectedCase.class}</p>
+            {selectedCase.status === "Pending" && (
+              <div>
+                <button onClick={handleApprove}>Approve</button>
+                <button onClick={handleReject}>Reject</button>
+              </div>
+            )}
           </div>
         </div>
       )}

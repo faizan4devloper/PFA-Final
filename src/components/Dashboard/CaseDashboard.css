@@ -1,14 +1,24 @@
 .admin-dashboard {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 11 */
+}
+
+.admin-dashboard::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+.admin-dashboard {
   font-family: Arial, sans-serif;
+  margin-top: 60px;
 }
 .admin-dashboard h2 {
   text-align: center;
-  margin-bottom: 30px;
-  font-family: "Arial", sans-serif; /* Custom font family */
-  color: #007bff; /* Custom color */
-  font-size: 24px; /* Custom font size */
-  text-transform: uppercase; /* Convert text to uppercase */
-  letter-spacing: 2px; /* Adjust letter spacing */
+  /* margin-bottom: 30px; */
+  font-family: "Arial", sans-serif;
+  color: #00a8c5;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 .submissions-table {
   width: 100%;
@@ -23,7 +33,7 @@
 }
 
 .submissions-table th {
-  background-color: #000000;
+  background-color: #464646;
   color: #fff;
   padding: 20px;
 }
@@ -53,4 +63,10 @@
 .submissions-table .btn-delete {
   background-color: #f56565;
   color: white;
+}
+.graph-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

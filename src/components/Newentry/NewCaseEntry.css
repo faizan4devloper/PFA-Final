@@ -1,3 +1,24 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d2d2d3;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0056b3;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f8f9fa;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #f8f9fa;
+}
+
 .container {
   max-width: 500px;
   margin: 50px auto;
@@ -11,7 +32,7 @@
   text-align: center;
   margin-bottom: 30px;
   font-family: "Arial", sans-serif; /* Custom font family */
-  color: #007bff; /* Custom color */
+  color: #00a8c5;
   font-size: 24px; /* Custom font size */
   text-transform: uppercase; /* Convert text to uppercase */
   letter-spacing: 2px; /* Adjust letter spacing */
@@ -98,5 +119,20 @@ input[type="file"] {
 }
 
 .file-input-icon {
-  margin-right: 8px; /* Add some space between the icon and the text */
+  margin-right: 8px;
+}
+.success-message {
+  display: flex;
+  align-items: center;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.success-icon {
+  margin-right: 10px;
+  color: #155724;
 }
